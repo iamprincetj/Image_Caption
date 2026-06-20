@@ -1,6 +1,7 @@
 langchain
 langchain-openai
 langchain-community
+langchain-chroma
 fastapi
 uvicorn
 python-multipart
@@ -8,4 +9,3 @@ pillow
 chromadb
 python-dotenv
 openai
-langchain-huggingface
