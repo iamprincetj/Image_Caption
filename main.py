@@ -4,8 +4,18 @@ import shutil
 import uuid
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.responses import JSONResponse
+from contextlib import asynccontextmanager
+from src.vector_store.base import build_vector_store
 
-app = FastAPI(title="Image Caption API")
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    print("Building vector store on startup...")
+    build_vector_store()
+    print("Vector store ready.")
+    yield
+    # (nothing needed on shutdown)
+
+app = FastAPI(title="Image Caption API", lifespan=lifespan)
 
 UPLOAD_DIR = "temp_uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
