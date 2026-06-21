@@ -1,7 +1,7 @@
 import base64
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage
-from .config.env import BASE_URL, GITHUB_TOKEN
+from src.config.env import BASE_URL, get_api_key
 
 
 # Langchain client pointed at Github Models' OpenAI-compatible endpoint
@@ -9,7 +9,7 @@ from .config.env import BASE_URL, GITHUB_TOKEN
 vision_llm = ChatOpenAI(
     model="gpt-4o",
     base_url=BASE_URL,
-    api_key=GITHUB_TOKEN,
+    api_key=get_api_key(),
     temperature=0.4
 )
 

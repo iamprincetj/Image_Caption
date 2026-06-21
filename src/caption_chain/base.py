@@ -2,14 +2,14 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
-from src.config.env import BASE_URL, GITHUB_TOKEN
+from src.config.env import BASE_URL, get_api_key
 from src.vision import describe_image
 from src.vector_store.base import retrieve_similar_examples
 
 caption_llm = ChatOpenAI(
     model="gpt-4o",
     base_url=BASE_URL,
-    api_key=GITHUB_TOKEN,
+    api_key=get_api_key(),
     temperature=0.9, # higher temperature: caption should feel creative, not deterministic
 )
 
