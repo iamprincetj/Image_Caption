@@ -1,6 +1,6 @@
 from langchain_chroma  import Chroma
 from langchain_core.documents import Document
-from src.config.env import BASE_URL1, GITHUB_TOKEN
+from src.config.env import BASE_URL1, MY_GITHUB_TOKEN
 from src.test.example_captions import EXAMPLE_CAPTIONS
 from langchain_openai import OpenAIEmbeddings
 
@@ -9,7 +9,7 @@ PERSIST_DIR = "chroma_db"
 embeddings = OpenAIEmbeddings(
     model= "openai/text-embedding-3-small",
     base_url=BASE_URL1,
-    api_key=GITHUB_TOKEN
+    api_key=MY_GITHUB_TOKEN
 )
 
 def build_vector_store():
